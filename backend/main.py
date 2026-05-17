@@ -129,9 +129,15 @@ def create_app() -> FastAPI:
     @app.get("/health", tags=["system"])
     async def health_check() -> dict[str, str]:
         return {
-            "status": "ok",
+            "status": "Ok, your system is Active!",
             "service": settings.app_name,
             "environment": settings.environment,
+        }
+
+    @app.get("/")
+    async def root():
+        return {
+            "message": "AI Automation n8n Backend Running"
         }
 
     return app
